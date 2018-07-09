@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- link for JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Boostrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <!-- Socket Link -->
+    <!-- <script type ="text/javascript" src="/socket.io/socket.io.js"></script> -->
+    <script type="text/javascript"></script>
+    <script>
+        $(document).ready(function(){
+            $(button).click(function(){
+                prompt("You have success fully updated this bears information")
+            })
+
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Edit</h1>
+        <form action="/edit/<%= bear.id %>" method="post">
+            <% if(messages.registration) { %>
+                <% for (var x of messages.registration) { %>
+                <h3><%= x %></h3>
+                <% } %>
+            <% } %>
+            <h4>Name:</h4>
+            <input class="form-control" type="text" name="name" value="<%= bear.name %>">
+            <h4>Quote:</h4>
+            <input class="form-control" type="text" name="quote" value="<%= bear.quote %>">
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button> <a href="/" class="btn btn-success">Home</a>
+        </form>
+    </div>
+    <div id="results" class="container">
+            <%= bear.name %>
+            <%= bear.quote %>
+    </div>
+</body>
+
+</html>

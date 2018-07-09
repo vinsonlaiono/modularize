@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <!-- link for JQuery -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <!-- Boostrap CDN -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+         crossorigin="anonymous">
+     <!-- Socket Link -->
+     <!-- <script type ="text/javascript" src="/socket.io/socket.io.js"></script> -->
+     <script type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>All Bears</h1>
+        <% if(messages.registration) { %>
+            <% for (var x of messages.registration) { %>
+            <h3><%= x %></h3>
+            <% } %>
+        <% } %>
+        <form action="/addBear" method="post">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">User</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Please enter a name...">
+                <br>
+                <textarea type="number" class="form-control" name="quote" id="quote" placeholder="What would you like to say..."></textarea>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quote</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <% for (var x in bears) { %>
+                            <tr>
+                                <td>
+                                   <a href="show/<%= bears[x]._id %>"><%= bears[x].name %></a>
+                                </td>
+                                <td>
+                                    <%= bears[x].quote %>
+                                </td>
+                                <td>
+                                    <a href="/delete/<%= bears[x].id %>" class="btn btn-danger">
+                                        delete
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+
+           
+    </div>
+</body>
+</html>
